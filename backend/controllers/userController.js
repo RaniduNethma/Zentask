@@ -3,7 +3,11 @@ import validator from 'validator';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
-//Register function
+const JWT_SECRET = process.env.JWT_SECRET || 'your jwt secret is here';
+const TOKEN_EXPIRES = '24h';
+const createToken = (userId) => jwt.sign({id: userId}, JWT_SECRET, {expiresIn: TOKEN_EXPIRES});
+
+//User Register Function
 export async function registerUser(req, res){
     const{name, email, password} = req.body;
 
@@ -56,3 +60,5 @@ export async function registerUser(req, res){
         })
     }
 }
+
+//User Login Function
