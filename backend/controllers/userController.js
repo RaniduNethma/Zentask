@@ -108,3 +108,26 @@ export async function userLogin(req, res){
         });
     }
 }
+
+//Get Current User Details
+export async function getCurrentUser(req, res){
+    try {
+        const user = await user.findById(req.user.id).select("name email");
+        if(!user){
+            return res.status(400).json({
+                success: false,
+                message: "User not found"
+            });
+        }
+        res.json({
+            success: true,
+            user
+        })
+    } catch(error){
+        console.log(error);
+        res.status(500).json({
+            success: false,
+            message: "Server Error"
+        });
+    }
+}
