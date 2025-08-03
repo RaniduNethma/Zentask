@@ -20,8 +20,8 @@ app.use("/api/user", userRouter);
 
 app.get('/', (req, res) => {
     res.send('Api Working');
-})
+});
 
 app.listen(port, () => {
-    console.log('Server Started on http://localhost:${port}');
-})
+    console.log(`Server Started on http://localhost:${port}`);
+});

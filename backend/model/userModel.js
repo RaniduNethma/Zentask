@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true,
+        required: true
     },
 
     email: {
@@ -16,7 +16,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     }
-})
+});
 
 const userModel = mongoose.models.user || mongoose.model('user', userSchema);
 
