@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
 import 'dotenv/config';
 
-const DBConnctLink = process.env.DBLINK;
+const DBConnction = process.env.DBLINK;
 
 export const connectDB = async() => {
-    await mongoose.connect(DBConnctLink)
+    await mongoose.connect(DBConnction)
         .then (() => console.log('Database Connected'));
 }
