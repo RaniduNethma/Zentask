@@ -5,7 +5,7 @@ import { connectDB } from './config/db.js';
 import userRouter from './routes/userRoute.js'
 
 const app = express();
-const port = 6500 || process.env.PORT;
+const port = process.env.PORT;
 
 //Middleware
 app.use(cors());
