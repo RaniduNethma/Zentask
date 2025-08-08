@@ -3,7 +3,7 @@ import validator from 'validator';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
-const JWT_SECRET = process.env.JWT_SECRET;
+const JWT_SECRET = process.env.JWT_SECRET || 'yo-jwt-ce-he';
 const TOKEN_EXPIRES = '24h';
 const createToken = (userId) => jwt.sign({id: userId}, JWT_SECRET, {expiresIn: TOKEN_EXPIRES});
 
@@ -31,7 +31,7 @@ export async function registerUser(req, res){
     }
 
     try{
-        if(await user.findOne({email})){
+        if(await User.findOne({email})){
             return res.status(409).json({
                 success: false,
                 message: "User already exists"
@@ -56,7 +56,7 @@ export async function registerUser(req, res){
         console.log(error);
         res.status(500).json({
             success: false,
-            message: "Server Error"
+            message: "Server Error (User Register Function)"
         });
     }
 }
