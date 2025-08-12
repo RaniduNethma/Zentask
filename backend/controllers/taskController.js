@@ -1,3 +1,4 @@
+import Task from '../model/taskModel.js';
 import taskModel from '../model/taskModel.js';
 
 //Create a new task
@@ -46,16 +47,61 @@ export const getTasks = async (req, res) => {
 //Get single task by ID
 export const getTaskById = async (req, res) => {
     try {
-        const task = await Task.findOne({_id: req.params.id, owner: req.user.id});
+        const task = await Task.findOne(
+            {
+                _id: req.params.id,
+                owner: req.user.id
+            }
+        );
         if(!task){
             return res.status(401).json({
                 success: false,
-                message: 'Task not found'
+                message: 'Task not found.'
             });
         }
         res.json({
             success: true,
             task
+        });
+    }
+    catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+}
+
+//Update a task
+export const updateTask = async (req, res) => {
+    try {
+        const data = {... req.body};
+        if(data.completed !== undefined){
+            data.completed = data.completed == 'Yes' || data.completed == true;
+        }
+
+        const updated = await Task.findOneAndUpdate(
+            {
+                _id: req.params.id,
+                owner: req.user.id
+            },
+            data,
+            {
+                new: true,
+                runValidators: true
+            }
+        );
+
+        if(!updated){
+            return res.status(404).json({
+                success: false,
+                message: 'Task not found or not yours.'
+            });
+        }
+        
+        res.status(200).json({
+            message: true,
+            message: 'Task updated.'
         });
     }
     catch (error) {
