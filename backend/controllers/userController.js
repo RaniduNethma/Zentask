@@ -105,7 +105,7 @@ export async function userLogin(req, res){
         console.log(error);
         res.status(500).json({
             success: false,
-            message: "Server Error"
+            message: "Server Error (User Login Function)"
         });
     }
 }
@@ -129,7 +129,7 @@ export async function getCurrentUser(req, res){
         console.log(error);
         res.status(500).json({
             success: false,
-            message: "Server Error"
+            message: "Server Error (Get Current User Details Function)"
         });
     }
 }
@@ -169,7 +169,7 @@ export async function updateUserProfile(req, res){
         console.log(error);
         res.status(500).json({
             success: false,
-            message: "Server Error"
+            message: "Server Error (Update User Profile Function)"
         });
     }
 }
@@ -213,7 +213,7 @@ export async function updateUserPassword(req, res){
         console.log(error);
         res.status(500).json({
             success: false,
-            message: "Server Error"
+            message: "Server Error (Change Password Function)"
         });
     }
 }
