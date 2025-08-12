@@ -19,7 +19,7 @@ export const createTask = async (req, res) => {
         });
     }
     catch (error) {
-        res.status(400).json({
+        res.status(500).json({
             success: false,
             message: error.message
         });
@@ -36,7 +36,30 @@ export const getTasks = async (req, res) => {
         });
     }
     catch (error) {
-        res.status(400).json({
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+}
+
+//Get single task by ID
+export const getTaskById = async (req, res) => {
+    try {
+        const task = await Task.findOne({_id: req.params.id, owner: req.user.id});
+        if(!task){
+            return res.status(401).json({
+                success: false,
+                message: 'Task not found'
+            });
+        }
+        res.json({
+            success: true,
+            task
+        });
+    }
+    catch (error) {
+        res.status(500).json({
             success: false,
             message: error.message
         });
