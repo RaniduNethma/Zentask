@@ -18,7 +18,7 @@ connectDB();
 
 //Routes
 app.use("/api/user", userRouter);
-app.use("api/task", taskRouter);
+app.use("/api/task", taskRouter);
 
 app.get('/', (req, res) => {
     res.send('Api Working');
