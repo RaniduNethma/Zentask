@@ -47,12 +47,7 @@ export const getTasks = async (req, res) => {
 //Get single task by ID
 export const getTaskById = async (req, res) => {
     try {
-        const task = await Task.findOne(
-            {
-                _id: req.params.id,
-                owner: req.user.id
-            }
-        );
+        const task = await Task.findOne({_id: req.params.id, owner: req.user.id});
         if(!task){
             return res.status(401).json({
                 success: false,
