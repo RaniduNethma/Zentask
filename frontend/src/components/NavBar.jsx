@@ -13,6 +13,11 @@ const NavBar = () => {
                 from-green-500 via-teal-500 to-sky-500 group-hover:shadow-purple-300/50 group-hover:scale-105 transition-all duration-300'>
                     <Shell className='w-6 h-6 text-white'/> {/*logo icon*/}
                 </div>
+
+                {/*Brand name*/}
+                <span className='text-2xl font-sans font-bold text-sky-900' >
+                  ZenTask
+                </span>
             </div>
         </div>
     </header>
