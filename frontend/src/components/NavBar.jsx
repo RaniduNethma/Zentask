@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Shell } from 'lucide-react';
+import { Settings, Shell } from 'lucide-react';
 
 const NavBar = () => {
   return (
@@ -18,6 +18,13 @@ const NavBar = () => {
                 <span className='text-2xl font-sans font-bold text-sky-900' >
                   ZenTask
                 </span>
+            </div>
+            <div className='flex items-center gap-4'>
+              {/*Settings button*/}
+              <button onClick={() => navigate('/profile')} className='p-2 text-sky-900 hover:text-sky-600 
+              transition-colors duration-300 hover:bg-purple-50 rounded-full'>
+                <Settings className='w-5.5 h-5.5'/>
+              </button>
             </div>
         </div>
     </header>
