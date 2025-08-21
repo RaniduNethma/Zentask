@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ChevronDown, Settings, Shell } from 'lucide-react';
+import { ChevronDown, LogOut, Settings, Shell } from 'lucide-react';
 
 const NavBar = () => {
 
@@ -8,6 +8,10 @@ const NavBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
   const handleMenuToggle = () => setMenuOpen((prev) => !prev);
+  const handleLogout = () => {
+    setMenuOpen(false)
+    onLogout()
+  }
 
   return (
     <header className='sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-200 font-sans'>
@@ -74,8 +78,12 @@ const NavBar = () => {
                       </button>
                     </li>
 
-                    <li>
-                      
+                    <li className='p-2'>
+                      <button onClick={handleLogout} className='flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm 
+                      hover:bg-red-50 text-red-600'>
+                        <LogOut className='w-4 h-4'/>
+                        Logout
+                      </button>
                     </li>
                   </ul>
                 )}
