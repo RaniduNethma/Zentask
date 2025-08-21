@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import NavBar from './components/NavBar'
-import { Route, Routes, useNavigate } from 'react-router-dom'
+import { Outlet, Route, Routes, useNavigate } from 'react-router-dom'
+import { Layout } from 'lucide-react';
+import layout from './components/layout';
+import Login from './components/Login';
+import SignUp from './components/SignUp';
 
 function App() {
   const navigate = useNavigate();
@@ -22,13 +25,37 @@ function App() {
     const user = {
       email: data.email,
       name: data.name || 'User',
-      avatar: ''
+      avatar: `https://ui-avatars.com/api/?name=${encodeURIComponent(data.name || 'User')}&background=random`
     }
+    setCurrentUser(user);
+    navigate('/', {replace: true});
+  }
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    setCurrentUser(null);
+    navigate('/login', {replace: true});
+  }
+
+  const protectedLayout = () => {
+    <Layout user={currentUser} onLogout={handleLogout}>
+      <Outlet />
+    </Layout>
   }
 
   return (
     <Routes>
-      <Route path='/' element={ }
+      <Route path='/login' element={<div className='fixed inset-0 bg-black bg-opacity-50 
+      flex items-center justify-center'>
+        <Login onSubmit = {handleAuthSubmit} onSwitchMode = { () => navigate('/singnup')} />
+      </div>}/>
+
+      <Route path='/signup' element={<div className='fixed inset-0 bg-black bg-opacity-50 
+      flex items-center justify-center'>
+        <SignUp onSubmit = {handleAuthSubmit} onSwitchMode = { () => navigate('/login')} />
+      </div>}/>
+
+      <Route path='/' element={<layout/>} />
     </Routes>
   )
 }
