@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import { Outlet, Route, Routes, useNavigate } from 'react-router-dom'
-import { Layout } from 'lucide-react';
-import layout from './components/layout';
+import React, { useEffect, useState } from 'react';
+import { Outlet, Route, Routes, useNavigate } from 'react-router-dom';
+import Layout from './components/Layout';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 
@@ -55,7 +54,7 @@ function App() {
         <SignUp onSubmit = {handleAuthSubmit} onSwitchMode = { () => navigate('/login')} />
       </div>}/>
 
-      <Route path='/' element={<layout/>} />
+      <Route path='/' element={<Layout/>} />
     </Routes>
   )
 }
