@@ -1,9 +1,12 @@
 import React from 'react'
+import NavBar from './NavBar'
 
-function layout() {
+const Layout = ({ onLogout, user }) => {
   return (
-    <div>layout</div>
-  )
+    <div className='min-h-screen bg-gray-50'>
+      <NavBar user={user} onLogout={onLogout} />
+    </div>
+  );
 }
 
-export default layout
+export default Layout

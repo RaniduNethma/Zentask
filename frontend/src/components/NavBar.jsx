@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ChevronDown, LogOut, Settings, Shell } from 'lucide-react';
 
-const NavBar = () => {
+const NavBar = ({ user={}, onLogout }) => {
 
   const menuref = useRef(null);
   const [menuOpen, setMenuOpen] = useState(false);
