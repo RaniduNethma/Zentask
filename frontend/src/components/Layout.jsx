@@ -44,6 +44,9 @@ const Layout = ({ onLogout, user }) => {
     ).length
   });
 
+  const totalCount = task.length;
+  
+
   return (
     <div className='min-h-screen bg-gray-50'>
       <NavBar user={user} onLogout={onLogout} />
