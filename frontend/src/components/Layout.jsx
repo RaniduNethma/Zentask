@@ -45,6 +45,7 @@ const Layout = ({ onLogout, user }) => {
   });
 
   const totalCount = task.length;
+  const pendingCount = totalCount - completedTasks;
   
 
   return (
