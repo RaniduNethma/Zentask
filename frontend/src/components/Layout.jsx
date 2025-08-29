@@ -42,11 +42,18 @@ const Layout = ({ onLogout, user }) => {
     const completedTasks = tasks.filter(t => 
       t.completed === true || t.completed === 1 || (typeof t.completed === "string" && t.completed.toLowerCase() === 'yes')
     ).length
-  });
 
-  const totalCount = task.length;
-  const pendingCount = totalCount - completedTasks;
-  
+    const totalCount = task.length;
+    const pendingCount = totalCount - completedTasks;
+    const completionPercentage = totalCount ? Math.round((completedTasks / totalCount) * 100) : 0;
+
+    return {
+      totalCount,
+      completedTasks,
+      pendingCount,
+      completionPercentage
+    }
+  }, [tasks]);
 
   return (
     <div className='min-h-screen bg-gray-50'>
