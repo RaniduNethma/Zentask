@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import NavBar from './NavBar';
 import { Sidebar } from 'lucide-react';
 import { Outlet } from 'react-router-dom';
@@ -37,6 +37,10 @@ const Layout = ({ onLogout, user }) => {
   }, [onLogout]);
   
   useEffect(() => { fetchTasks() }, [fetchTasks]);
+
+  const stats = useMemo( () => {
+    
+  });
 
   return (
     <div className='min-h-screen bg-gray-50'>
