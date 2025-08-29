@@ -39,7 +39,9 @@ const Layout = ({ onLogout, user }) => {
   useEffect(() => { fetchTasks() }, [fetchTasks]);
 
   const stats = useMemo( () => {
-    
+    const completedTasks = tasks.filter(t => 
+      t.completed === true || t.completed === 1 || (typeof t.completed === "string" && t.completed.toLowerCase() === 'yes')
+    ).length
   });
 
   return (
