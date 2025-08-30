@@ -82,7 +82,15 @@ const Layout = ({ onLogout, user }) => {
     </div>
   )
 
-  
+  //Error
+  if(error) return (
+    <div className='min-h-screen bg-gray-50 p-6 flex items-center justify-center'>
+      <div className='bg-red-50 text-red-600 p-4 rounded-xl border border-red-100 max-w-md'>
+        <p className='font-medium mb-2'>Error Loading Tasks</p>
+        <p className='text-sm'>{ error }</p>
+      </div>
+    </div>
+  )
 
   return (
     <div className='min-h-screen bg-gray-50'>
