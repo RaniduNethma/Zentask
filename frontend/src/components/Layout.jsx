@@ -88,6 +88,10 @@ const Layout = ({ onLogout, user }) => {
       <div className='bg-red-50 text-red-600 p-4 rounded-xl border border-red-100 max-w-md'>
         <p className='font-medium mb-2'>Error Loading Tasks</p>
         <p className='text-sm'>{ error }</p>
+        <button onClick={fetchTasks} className='mt-4 py-2 px-10 bg-red-100 text-red-700 rounded-lg 
+        text-sm font-medium hover:bg-red-200 transition-colors'>
+          Try Again
+        </button>
       </div>
     </div>
   )
