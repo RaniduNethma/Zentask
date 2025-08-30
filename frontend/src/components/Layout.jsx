@@ -43,7 +43,7 @@ const Layout = ({ onLogout, user }) => {
       t.completed === true || t.completed === 1 || (typeof t.completed === "string" && t.completed.toLowerCase() === 'yes')
     ).length
 
-    const totalCount = task.length;
+    const totalCount = tasks.length;
     const pendingCount = totalCount - completedTasks;
     const completionPercentage = totalCount ? Math.round((completedTasks / totalCount) * 100) : 0;
 
@@ -54,6 +54,25 @@ const Layout = ({ onLogout, user }) => {
       completionPercentage
     }
   }, [tasks]);
+
+  const StatCard = ({ title, value, icon}) => (
+    <div className='p-2 sm:p-3 rounded-xl bg-white shadow-sm border border-sky-100 hover:shadow-md transition-all 
+    duration-300 hover:border-sky-100 group'>
+      <div className='flex items-center gap-2'>
+        <div className='p-1.5 rounded-lg bg-gradient-to-br from-green-500/10 to-sky-500/10 
+        group-hover:from-green-500/20 group-hover:to-sky-500/20'>
+          {icon}
+        </div>
+        <div className='min-w-0'>
+          <p className='text-lg sm:text-xl front-bold bg-gradient-to-r from-green-500 to-sky-500
+          bg-clip-text text-transparent'>
+            {value}
+          </p>
+          <p className='text-xs text-gray-500 font-medium '> {title} </p>
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <div className='min-h-screen bg-gray-50'>
